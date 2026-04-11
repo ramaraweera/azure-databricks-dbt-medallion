@@ -1,0 +1,22 @@
+name: 'gaming_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'gaming_analytics'
+
+model-paths:   ["models"]
+seed-paths:    ["seeds"]
+test-paths:    ["tests"]
+macro-paths:   ["macros"]
+target-path:   "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  gaming_analytics:
+    staging:
+      +schema:       gaming_silver
+      +materialized: view
+    marts:
+      +schema:       gaming_gold
+      +materialized: table
+      +file_format:  delta

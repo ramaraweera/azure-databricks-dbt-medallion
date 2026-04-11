@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_vg_sales
+    description: >
+      Staged video game sales — clean input for all mart models.
+      One row per unique game + platform + year combination.
+    columns:
+      - name: game_platform_key
+        description: "MD5 surrogate key: game_name + platform + year_of_release"
+        tests:
+          - unique
+          - not_null
+      - name: game_name
+        tests:
+          - not_null
+      - name: global_sales_millions
+        tests:
+          - not_null
+      - name: genre
+        tests:
+          - not_null
+      - name: sales_tier
+        tests:
+          - accepted_values:
+              values: ['Blockbuster', 'Hit', 'Mid-Tier', 'Long-Tail']

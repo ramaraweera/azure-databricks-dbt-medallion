@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: fct_game_sales
+    description: >
+      Fact table: one row per game + platform. Central table for
+      marketing analytics. Joins to dim_game, dim_genre, dim_publisher,
+      dim_platform in a classic star schema.
+    columns:
+      - name: sales_id
+        description: "Surrogate key: game_name + platform + year_of_release"
+        tests:
+          - unique
+          - not_null
+      - name: global_sales_millions
+        tests:
+          - not_null
+      - name: genre_id
+        tests:
+          - not_null
+      - name: publisher_id
+        tests:
+          - not_null
+
+  - name: dim_game
+    description: "Game + platform dimension with release year and sales tier"
+    columns:
+      - name: game_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_genre
+    description: "Genre enriched with marketing category label from seed file"
+    columns:
+      - name: genre_id
+        tests:
+          - unique
+          - not_null
+      - name: genre_category
+        tests:
+          - accepted_values:
+              values: ['Core Gaming', 'Casual Gaming', 'Other']
+
+  - name: dim_publisher
+    description: "Publisher dimension"
+    columns:
+      - name: publisher_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_platform
+    description: "Platform dimension (PS2, Wii, X360, PC, DS, etc.)"
+    columns:
+      - name: platform_id
+        tests:
+          - unique
+          - not_null

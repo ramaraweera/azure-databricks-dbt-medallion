@@ -1,0 +1,13 @@
+genre,genre_category,is_competitive
+Action,Core Gaming,true
+Sports,Core Gaming,true
+Shooter,Core Gaming,true
+Role-Playing,Core Gaming,false
+Platform,Core Gaming,false
+Racing,Core Gaming,true
+Fighting,Core Gaming,true
+Simulation,Casual Gaming,false
+Puzzle,Casual Gaming,false
+Misc,Other,false
+Adventure,Core Gaming,false
+Strategy,Core Gaming,false

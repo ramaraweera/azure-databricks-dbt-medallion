@@ -1,0 +1,16 @@
+# profiles.yml.example
+# For LOCAL dbt Core use only.
+# dbt Cloud manages connection credentials through its UI — you do not need this file there.
+# To use locally: copy to ~/.dbt/profiles.yml and fill in your values.
+
+gaming_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      schema: gaming_gold
+      host: "<your-server-hostname>"        # SQL Warehouse > Connection Details > Server Hostname
+      http_path: "<your-http-path>"         # SQL Warehouse > Connection Details > HTTP Path
+      token: "<your-databricks-pat>"        # Databricks > Settings > Developer > Access Tokens
+      threads: 4
+      catalog: null                         # leave null to use hive_metastore

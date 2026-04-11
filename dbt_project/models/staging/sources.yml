@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: silver
+    database: hive_metastore
+    schema: gaming_silver
+    description: "Cleaned video game sales data from the Silver Delta layer"
+    tables:
+      - name: vg_sales_clean
+        description: "Cleaned, typed and enriched video game sales"
+        columns:
+          - name: game_name
+            description: "Title of the video game"
+          - name: platform
+            description: "Platform the game was released on (PS2, Wii, X360, PC etc.)"
+          - name: year_of_release
+            description: "Year the game was released (integer)"
+          - name: genre
+            description: "Game genre (Action, Sports, Role-Playing etc.)"
+          - name: publisher
+            description: "Publisher of the game"
+          - name: global_sales_millions
+            description: "Total worldwide sales in millions of units"
+          - name: na_sales_millions
+            description: "North America sales in millions of units"
+          - name: eu_sales_millions
+            description: "Europe sales in millions of units"
+          - name: jp_sales_millions
+            description: "Japan sales in millions of units"
+          - name: other_sales_millions
+            description: "Rest of world sales in millions of units"
+          - name: sales_tier
+            description: "Blockbuster / Hit / Mid-Tier / Long-Tail"
+          - name: is_global_hit
+            description: "True if global_sales_millions >= 1.0"
