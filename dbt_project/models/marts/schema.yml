@@ -1,6 +1,9 @@
 version: 2
 
 models:
+# Note: In the sample dataset there are 2 game+platform rows that are
+# duplicated in the raw source, so this test intentionally fails to show
+# how data quality issues surface in dbt.
   - name: fct_game_sales
     description: >
       Fact table: one row per game + platform. Central table for
@@ -40,7 +43,8 @@ models:
       - name: genre_category
         tests:
           - accepted_values:
-              values: ['Core Gaming', 'Casual Gaming', 'Other']
+              arguments:
+                values: ['Core Gaming', 'Casual Gaming', 'Other']
 
   - name: dim_publisher
     description: "Publisher dimension"

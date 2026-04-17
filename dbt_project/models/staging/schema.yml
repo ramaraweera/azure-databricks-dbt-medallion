@@ -23,4 +23,5 @@ models:
       - name: sales_tier
         tests:
           - accepted_values:
-              values: ['Blockbuster', 'Hit', 'Mid-Tier', 'Long-Tail']
+              arguments:
+                values: ['Blockbuster', 'Hit', 'Mid-Tier', 'Long-Tail']
